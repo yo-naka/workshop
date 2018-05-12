@@ -1,8 +1,8 @@
 package teamitp;
 
 class Card {
-    String suit;
-    int rank;
+    Suit suit;
+    Rank rank;
 
     @Override
     public String toString() {

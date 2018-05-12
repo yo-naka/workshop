@@ -7,19 +7,19 @@ public class App {
             deck[i] = new Card();
             switch (i / 13) {
             case 0:
-                deck[i].suit = "Spade";
+                deck[i].suit = Suit.Spade;
                 break;
             case 1:
-                deck[i].suit = "Diamond";
+                deck[i].suit = Suit.Diamond;
                 break;
             case 2:
-                deck[i].suit = "Club";
+                deck[i].suit = Suit.Club;
                 break;
             case 3:
-                deck[i].suit = "Heart";
+                deck[i].suit = Suit.Heart;
                 break;
             }
-            deck[i].rank = (i % 13) + 1;
+            deck[i].rank = Rank.of((i % 13) + 1);
         }
 
         for (int i = 0; i < deck.length; i++) {
