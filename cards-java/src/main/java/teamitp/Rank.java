@@ -7,6 +7,10 @@ class Rank {
         this.number = number;
     }
 
+    public int value() {
+        return number;
+    }
+
     @Override
     public String toString() {
         if (number == 1) {

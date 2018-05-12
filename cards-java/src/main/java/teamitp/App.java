@@ -2,28 +2,30 @@ package teamitp;
 
 public class App {
     public static void main(String[] args) {
-        Card[] deck = new Card[52];
-        for (int i = 0; i < deck.length; i++) {
-            deck[i] = new Card();
-            switch (i / 13) {
-            case 0:
-                deck[i].suit = Suit.Spade;
-                break;
-            case 1:
-                deck[i].suit = Suit.Diamond;
-                break;
-            case 2:
-                deck[i].suit = Suit.Club;
-                break;
-            case 3:
-                deck[i].suit = Suit.Heart;
-                break;
-            }
-            deck[i].rank = Rank.of((i % 13) + 1);
-        }
+        Deck deck = Deck.createNewDeck();
+        Card c1 = deck.takeRandom();
+        Card c2 = deck.takeRandom();
 
-        for (int i = 0; i < deck.length; i++) {
-            System.out.println(deck[i]);
+        int points = calculatePoints(c1.rank, c2.rank);
+        System.out.println("[引いたカード]");
+        System.out.println(String.format("1枚目: %s", c1));
+        System.out.println(String.format("2枚目: %s", c2));
+        System.out.println("[合計得点]");
+        System.out.println(String.format("%d 点", points));
+    }
+
+    private static int calculatePoints(Rank rank1, Rank rank2) {
+        int totalPoints = 0;
+        if (rank1.value() > 10) {
+            totalPoints += 10;
+        } else {
+            totalPoints += rank1.value();
         }
+        if (rank2.value() > 10) {
+            totalPoints += 10;
+        } else {
+            totalPoints += rank2.value();
+        }
+        return totalPoints;
     }
 }
